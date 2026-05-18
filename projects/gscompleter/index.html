@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="GSCompleter: A Distillation-Free Plugin for Metric-Aware 3D Gaussian Splatting Completion in Seconds.">
+  <meta name="keywords" content="3D Gaussian Splatting, 3D Completion, Computer Vision, Computer Graphics">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GSCompleter: A Distillation-Free Plugin for Metric-Aware 3D Gaussian Splatting Completion in Seconds</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/logo.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://GSCompleter.github.io">
+            GSCompleter
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">GSCompleter: A Distillation-Free Plugin for Metric-Aware 3D Gaussian Splatting Completion in Seconds</h1>
+          <!-- Author list removed for anonymous submission
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Anonymous Authors</span>
+          </div> -->
+          
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Ao Gao<sup>1,2</sup>,</span>
+            <span class="author-block">Jingyu Gong<sup>1,3,4,&#8224;</sup>,</span>
+            <span class="author-block">Xin Tan<sup>1,3</sup>,</span>
+            <span class="author-block">Zhizhong Zhang<sup>1,4</sup>,</span>
+            <span class="author-block">Lizhuang Ma<sup>1,5</sup>,</span>
+            <span class="author-block">Yuan Xie<sup>1,2,3,&#8225;</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>East China Normal University;</span>
+            <span class="author-block"><sup>2</sup>Shanghai Innovation Institute;</span>
+            <span class="author-block"><sup>3</sup>Chongqing Institute of East China Normal University;</span>
+            <span class="author-block"><sup>4</sup>Shanghai Key Laboratory of Computer Software Evaluating and Testing;</span>
+            <span class="author-block"><sup>5</sup>Shanghai Jiao Tong University.</span>
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>&#8224;</sup>Corresponding author; <sup>&#8225;</sup>Project Leader.</span>
+            <br>
+            <span class="author-block">This work was done when Ao Gao was intern at SII.</span>
+          </div>
+         
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper(Coming Soon)</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2604.20155"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://yuhuoo.github.io/gscompleter.github.io/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code(Coming Soon)</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data(Coming Soon)</span>
+                  </a> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
+        free-viewpoint
+        portraits.
+      </h2>
+    </div>
+  </div>
+</section> -->
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img id="teaser" src="./static/images/tesear_01.png" alt="Teaser Image" style="width: 100%; height: auto;">
+      <h2 class="subtitle has-text-justified">
+        We propose a <b>Generate-then-Register</b> paradigm for rapid and robust 3DGS scene completion. 
+        <b>(a)</b> Given a 3DGS scene exhibiting geometric voids,  <b>(b)</b> we first synthesize a high-fidelity 2D reference image via a generative prior and explicitly <b>lift</b> it into metric-scale 3D Gaussian primitives guided by a stereo anchor view. 
+        <b>(c)</b> Instead of global optimization, we seamlessly register these primitives into the scene via a strictly ray-constrained integration strategy. 
+        <b>(d)</b> This process yields a completed scene with fidelity comparable to the Ground Truth, achieved within seconds.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            3D Gaussian Splatting (3DGS) has revolutionized high-fidelity neural rendering with its explicit representation and efficiency. 
+            However, reconstructing scenes from sparse viewpoints suffers from severe geometric voids and floaters due to limited coverage. 
+            Current scene completion methods typically rely on an iterative "Repair-then-Distill" paradigm, which is computationally intensive, 
+            prone to unstable optimization, and susceptible to overfitting. To address these limitations, we propose GSCompleter, a distillation-free plugin 
+            that shifts scene completion to a stable "Generate-then-Register" workflow. Specifically, GSCompleter synthesizes visually plausible 2D reference images 
+            and explicitly lifts them into 3D Gaussian primitives with a consistent metric scale via a robust Stereo-Anchor View Selection mechanism. 
+            These newly generated primitives are then seamlessly integrated into the global scene using a novel Ray-Constrained Registration strategy. 
+            By replacing unstable distillation with rapid geometric registration, GSCompleter exhibits superior 3DGS completion performance across three benchmarks, 
+            enhancing both quality and efficiency over various baselines and achieving new state-of-the-art (SOTA) results.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full">
+          <h2 class="title is-3">Demo Video</h2>
+          <video id="demo-video" class="is-fullwidth demo-video" autoplay muted loop playsinline controls>
+            <source src="./static/videos/tesear_video_gscompleter.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified">
+          <p>
+            Addressing the geometric holes in the novel view, we adopt a "Generate-then-Register" paradigm to complete the scene via four stages: 
+            <b>(1) Feed-Forward Metric Context Initialization:</b> We first reconstruct the observed regions using a scale-aware feed-forward 3DGS model, 
+            establishing a foundational context with metric scale; 
+            <b>(2) Anchor-Guided Gaussian Initialization:</b> To fill the voids, we generatively synthesize the novel view in 2D space, 
+            subsequently employing a Stereo-Anchor View Selection mechanism to pair the view with an optimal stereo anchor view, enabling it to be lifted into 3D Gaussians with accurate depth; 
+            <b>(3) Ray-Constrained Gaussian Registration</b>: To align these new primitives, we apply a coarse-to-fine mechanism that first rectifies global drift via RANSAC, 
+            followed by a strict 1-DoF ray-space optimization to lock primitives along their camera rays for for local refinement;
+            and <b>(4) Multi-View Gaussian Integration & Refinement</b>: Finally, redundant primitives are pruned, 
+            followed by an opacity-only refinement to seamlessly integrate newly generated Gaussians while preventing catastrophic forgetting of the initial scene.
+          </p>
+        </div>
+      </div>
+    </div>
+    <img id="method" src="./static/images/pipeline_01.png" alt="method" style="width: 100%; height: auto;">
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <!-- Visual Effects. -->
+      <div class="column is-full">
+        <div class="content has-text-centered">
+          <h2 class="title is-3">General Scene Completion</h2>
+          <p>
+            General scene testing on the DL3DV dataset, demonstrating the effectiveness of our method in general scenarios. Our approach effectively fills geometric voids in 3DGS scenes, improving rendering quality and efficiency.
+          </p>
+          <div class="columns is-multiline is-centered">
+            <div class="column is-half">
+              <video id="dollyzoom1" class="is-fullwidth" autoplay controls muted loop playsinline>
+                <source src="./static/videos/7e0c0e79298ee79079c3916c2a3530ac.mp4"
+                        type="video/mp4">
+              </video>
+              <video id="dollyzoom2" class="is-fullwidth" autoplay controls muted loop playsinline>
+                <source src="./static/videos/cc08c0bdc34ddd2867705d0b17a86ec2a9d7c7926ce99070ed1fdc66a812de07.mp4"
+                        type="video/mp4">
+              </video>
+              <video id="dollyzoom3" class="is-fullwidth" autoplay controls muted loop playsinline>
+                <source src="./static/videos/d4082190414a780dfdb7873aecd2cdc2.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+            <div class="column is-half">
+              <video id="dollyzoom4" class="is-fullwidth" autoplay controls muted loop playsinline>
+                <source src="./static/videos/d3af8212ae1600f078c4ac1ef3c9369a7f41ee9d005dbd0c545cf43fc35a9a23.mp4"
+                        type="video/mp4">
+              </video>
+              <video id="dollyzoom5" class="is-fullwidth" autoplay controls muted loop playsinline>
+                <source src="./static/videos/d9b6376623741313bf6da6bf4cdb9828be614a2ce9390ceb3f31cd535d661a75.mp4"
+                        type="video/mp4">
+              </video>
+              <video id="dollyzoom6" class="is-fullwidth" autoplay controls muted loop playsinline>
+                <source src="./static/videos/f7aaea9ac683bb1945cfeb1daa9abca3375249e0d19281a89a3f575040835464.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/ Visual Effects. -->
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column">
+        <h2 class="title is-3 has-text-centered">Autonomous Driving Scene Completion</h2>
+        <div class="columns is-centered">
+          <div class="column content has-text-centered">
+            <p>
+              We apply GSCompleter to autonomous driving scenes, where it effectively completes 3DGS scenes and demonstrates the generality of our method.
+            </p>
+            <div class="columns is-multiline">
+              <div class="column is-half">
+                <video id="matting-video1" autoplay controls muted loop playsinline height="100%">
+                  <source src="./static/videos/orbit_before_after_0024_cam0.mp4"
+                          type="video/mp4">
+                </video>
+                <video id="matting-video2" autoplay controls muted loop playsinline height="100%">
+                  <source src="./static/videos/orbit_before_after_0061_cam0.mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-half">
+                <video id="matting-video3" autoplay controls muted loop playsinline height="100%">
+                  <source src="./static/videos/orbit_before_after_0160_cam0.mp4"
+                          type="video/mp4">
+                </video>
+                <video id="matting-video4" autoplay controls muted loop playsinline height="100%">
+                  <source src="./static/videos/orbit_before_after_0178_cam0.mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Matting. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Qualitative Results</h2>
+      </div>
+    </div>
+    <img id="qualitative results" src="./static/images/qualitative_compare_01.png" alt="qualitative results" style="width: 100%; height: auto;">
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">More Re10K Results</h2>
+      </div>
+    </div>
+    <img id="more re10k results" src="./static/images/more_re10k_01.png" alt="more re10k results" style="width: 100%; height: auto;">
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">More ACID Results</h2>
+      </div>
+    </div>
+    <img id="more acid results" src="./static/images/more_acid_01.png" alt="more acid results" style="width: 100%; height: auto;">
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">More DL3DV Results</h2>
+      </div>
+    </div>
+    <img id="more dl3dv results" src="./static/images/more_dl3dv_01.png" alt="more dl3dv results" style="width: 100%; height: auto;">
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{sun2026dreambarbie,
+  title={DreamBarbie: Text to Barbie-Style 3D Avatars},
+  author={Sun, Xiaokun and Zhang, Zhenyu and Tai, Ying and Tang, Hao and Yi, Zili and Yang, Jian},
+  journal={TVCG},
+  year={2026}
+}</code></pre>
+  </div>
+</section> -->
+  
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            The website template was borrowed from <a href="https://github.com/nerfies/nerfies.github.io"> Nerfies </a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
